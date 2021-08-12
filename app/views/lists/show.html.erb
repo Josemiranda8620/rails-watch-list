@@ -1,11 +1,12 @@
-<p>
-  <%= @list.name %>
-</p>
+<div class="row justify-content-center mt-4 mb-4">
+    <h1><%= @list.name %></h1>
+</div> 
 
-<p>
+
+<h4 class="ml-3 mb-4">
   <strong>Bookmarked movies</strong>
   <%=  %>
-</p>
+</h4>
 
 
 <% if @list.movies.any? %>
@@ -15,12 +16,13 @@
         <li class="list-group-item  mt-3"><%= bookmark.movie.title%> | Rating: <%= bookmark.movie.rating%>
         <p> <%= bookmark.movie.overview%></p>
         <%= bookmark.id%></li>
-        <%= link_to 'Delete bookmark', list_bookmark_path(@list), method: :delete, class: 'card-remove-link', data: { confirm: "Destroy bookmark?"} %></li>
+        <%= link_to 'Delete bookmark', list_bookmark_path(@list), method: :delete, class: 'btn btn-danger mt-3 mb-3', data: { confirm: "Destroy bookmark?"}%></li>
       <% end %>  
     </ul>
   </p>
 <% else %>
   <p>No movies</p>
 <% end %>
-<%= link_to 'Add movie', new_list_bookmark_path(@list), class: "btn btn-light" %>
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Add movie', new_list_bookmark_path(@list), class: "btn btn-dark ml-3" %>
+<%= link_to 'Back', lists_path, class: "btn btn-dark ml-3"  %>
+
