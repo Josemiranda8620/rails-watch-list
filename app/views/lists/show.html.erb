@@ -1,0 +1,26 @@
+<p>
+  <%= @list.name %>
+</p>
+
+<p>
+  <strong>Bookmarked movies</strong>
+  <%=  %>
+</p>
+
+
+<% if @list.movies.any? %>
+  <p>
+    <ul>
+      <% @list.bookmarks.each do |bookmark| %>
+        <li class="list-group-item  mt-3"><%= bookmark.movie.title%> | Rating: <%= bookmark.movie.rating%>
+        <p> <%= bookmark.movie.overview%></p>
+        <%= bookmark.id%></li>
+        <%= link_to 'Delete bookmark', list_bookmark_path(@list), method: :delete, class: 'card-remove-link', data: { confirm: "Destroy bookmark?"} %></li>
+      <% end %>  
+    </ul>
+  </p>
+<% else %>
+  <p>No movies</p>
+<% end %>
+<%= link_to 'Add movie', new_list_bookmark_path(@list), class: "btn btn-light" %>
+<%= link_to 'Back', lists_path %>
