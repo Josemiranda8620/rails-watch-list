@@ -1,23 +1,26 @@
 
-
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80)">
+<div class="position-relative">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80)">
     Watch List
+  </div>
+  
+  <div class="position-absolute bottom-0 end-0"><p>"Hi"</p></div>
+  <div class="position-absolute bottom-0 end-0"><%= link_to "Create a new list" , new_list_path, class: "btn btn-warning" %></div>
 </div>
-<%= link_to "Create a new list" , new_list_path, class: "btn btn-warning ml-3" %> 
+
 <div class="container">
-  <div class="row justify-content-center mt-4 mb-4">
+  <div class="row justify-content-center mt-4">
     <h3>Lists of Movies</h3>
   </div> 
-  
+
   <div class="container d-flex justify-content-around">
     <% @lists.each do |list| %>
-      <div class="card mt-3 mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body ">
-          <h5 class="card-title row justify-content-center"><%=list.name%></h5>
-          <%= link_to "Check movies", list_path(list), class: "btn btn-dark ml-3 d-flex justify-content-center" %>
+        <div class="item card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : image_path('https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1728&q=80') %>)">
+            <div class="card-body ">
+                <h5 class="card-title row justify-content-center"><%=list.name%></h5>
+                <%= link_to "Check movies", list_path(list), class: "btn btn-dark ml-3 d-flex justify-content-center" %>
+            </div>
         </div>
-      </div>
     <% end %> 
   </div>
 </div>
