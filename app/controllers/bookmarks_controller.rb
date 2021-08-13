@@ -3,7 +3,6 @@ class BookmarksController < ApplicationController
     def new
         @list = List.find(params[:list_id])
         @bookmark = Bookmark.new 
-        # @movies = !@list.movies.order(title: : asc)
     end
 
     def create
@@ -23,7 +22,9 @@ class BookmarksController < ApplicationController
 
     def destroy
         @bookmark = Bookmark.find(params[:id])
+        @list = @bookmark.list
         @bookmark.destroy
+        
         redirect_to list_path(@list)
     end
 
